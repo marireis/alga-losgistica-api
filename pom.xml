@@ -40,7 +40,7 @@
 			<optional>true</optional>
 		</dependency>
 		
-		<!-- novo formato xml com Jackson- permite salvar no postman formato xml-->
+		<!-- formato xml com Jackson- permite salvar no postman formato xml-->
 		<!--
 		<dependency>
 			<groupId>com.fasterxml.jackson.dataformat</groupId>
@@ -48,7 +48,27 @@
 			<version>2.15.0</version>
 		</dependency>
 		-->
+
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-devtools</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-data-jpa</artifactId>
+		</dependency>
 		
+		<dependency>
+		    <groupId>com.mysql</groupId>
+		    <artifactId>mysql-connector-j</artifactId>
+		    <version>8.0.31</version>
+		</dependency>
+		
+		<!-- gerencia banco de dados-->
+		<dependency>
+			<groupId>org.flywaydb</groupId>
+			<artifactId>flyway-mysql</artifactId>
+		</dependency>
 	</dependencies>
 
 	<build>
