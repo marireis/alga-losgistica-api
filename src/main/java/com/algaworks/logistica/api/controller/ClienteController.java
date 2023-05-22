@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.algaworks.logistica.domain.model.Cliente;
 import com.algaworks.logistica.domain.repository.ClienteRepository;
+import com.algaworks.logistica.domain.service.ClienteService;
 
 import lombok.AllArgsConstructor;
 
@@ -25,6 +26,8 @@ import lombok.AllArgsConstructor;
 public class ClienteController {
 	
 	private ClienteRepository clienteRepository;
+	
+	private ClienteService clienteService;
 	
 	
 	@GetMapping
@@ -54,7 +57,7 @@ public class ClienteController {
 	
 	@PostMapping
 	public Cliente adicionar(@Valid @RequestBody Cliente cliente) {
-		return clienteRepository.save(cliente);
+		return clienteService.salvar(cliente);
 	}
 	
 	@PutMapping("/{clienteId}")
@@ -64,7 +67,7 @@ public class ClienteController {
 		}
 		
 		cliente.setId(clienteId);
-		clienteRepository.save(cliente);
+		clienteService.salvar(cliente);
 		
 		return ResponseEntity.ok(cliente);
 		
@@ -75,7 +78,7 @@ public class ClienteController {
 		if(!clienteRepository.existsById(clienteId)) {
 			return ResponseEntity.notFound().build();
 		}
-		clienteRepository.deleteById(clienteId);
+		clienteService.excluir(clienteId);
 		
 		return ResponseEntity.noContent().build();
 	}
