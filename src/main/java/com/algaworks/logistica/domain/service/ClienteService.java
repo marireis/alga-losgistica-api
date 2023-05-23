@@ -1,5 +1,7 @@
 package com.algaworks.logistica.domain.service;
 
+import java.util.Optional;
+
 import javax.transaction.Transactional;
 
 import org.springframework.stereotype.Service;
@@ -31,5 +33,16 @@ public class ClienteService {
 	@Transactional
 	public void excluir(Long clienteId) {
 		clienteRepository.deleteById(clienteId);
+	}
+	
+	public Cliente buscar(Long clienteId) {
+		
+		Optional<Cliente> cliente = clienteRepository.findById(clienteId);
+        if(cliente.isPresent()){
+            return cliente.get();
+        }else {
+            throw new NegocioException("Cliente não econtrado");
+        }
+
 	}
 }
